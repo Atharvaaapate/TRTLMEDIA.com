@@ -1,0 +1,75 @@
+:root{--bg:#E8EBEA;--ink:#111315;--mute:#6B7378;--line:rgba(17,19,21,.16);--acc:#C8F169;--pad:clamp(1.25rem,4vw,3.5rem)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 "Schibsted Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-underline-offset:3px}
+.lh{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding:1.2rem var(--pad);border-bottom:1px solid var(--line)}
+.logo{font-weight:700;letter-spacing:-.045em;font-size:1.3rem;text-decoration:none}
+.lh nav{display:flex;gap:.4rem 1.4rem;flex-wrap:wrap;font-size:.95rem}
+.lh nav a{color:var(--mute);text-decoration:none}
+.lh nav a:hover,.lh nav a[aria-current]{color:var(--ink)}
+.top-l{max-width:80rem;margin:auto;padding:clamp(3rem,9vw,7rem) var(--pad) 1.5rem}
+.kick{color:var(--mute);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:clamp(2.3rem,7vw,5.5rem);font-weight:500;letter-spacing:-.05em;line-height:1;margin:.8rem 0 1.3rem}
+.lead{max-width:44rem;color:var(--mute);font-size:1.15rem}
+.stamp{display:flex;gap:.6rem 2rem;flex-wrap:wrap;margin-top:1.6rem;font-size:.9rem;color:var(--mute)}
+.stamp b{color:var(--ink);font-weight:500}
+.wrap{display:grid;grid-template-columns:15rem 1fr;gap:4rem;max-width:80rem;margin:auto;padding:1.5rem var(--pad) 6rem}
+.toc{position:sticky;top:1.5rem;align-self:start;display:grid;gap:.45rem;font-size:.9rem;max-height:calc(100vh - 3rem);overflow:auto}
+.toc a{color:var(--mute);text-decoration:none}
+.toc a:hover{color:var(--ink)}
+.doc{counter-reset:s;max-width:46rem}
+.doc section{counter-increment:s;padding:2rem 0;border-top:1px solid var(--line);scroll-margin-top:1.5rem}
+.doc h2{font-size:1.5rem;font-weight:500;letter-spacing:-.03em;line-height:1.2;margin-bottom:.9rem}
+.doc h2::before{content:counter(s,decimal-leading-zero);color:var(--mute);font-size:.85rem;margin-right:.9rem;vertical-align:.2em}
+.doc p+p,.doc p+ul,.doc ul+p,.doc .tw+p{margin-top:.85rem}
+.doc ul{padding-left:1.2rem;display:grid;gap:.45rem;margin-top:.85rem}
+.tw{overflow-x:auto;margin-top:1rem}
+table{width:100%;border-collapse:collapse;font-size:.95rem;min-width:30rem}
+th,td{text-align:left;padding:.75rem .8rem .75rem 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);font-weight:500}
+.note{margin-top:1rem;padding:1rem 1.2rem;background:#fff;border-left:3px solid var(--acc);border-radius:0 10px 10px 0;font-size:.97rem}
+.lf{border-top:1px solid var(--line);padding:1.5rem var(--pad);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem 1.5rem;font-size:.9rem;color:var(--mute)}
+.lf nav{display:flex;gap:1.2rem;flex-wrap:wrap}
+@media(max-width:900px){.wrap{grid-template-columns:1fr;gap:0}.toc{display:none}}
+@media print{.lh,.toc,.lf{display:none}body{background:#fff}}
+
+body{animation:pgin .6s cubic-bezier(.2,.7,.1,1) both}
+@keyframes pgin{from{opacity:0;transform:translateY(10px)}}
+@media(prefers-reduced-motion:reduce){body{animation:none}}
+
+/* ---- mobile responsiveness (content unchanged) ---- */
+html{-webkit-text-size-adjust:100%}
+.doc,.lead,.stamp,.note,td,th{overflow-wrap:anywhere}
+.tw{-webkit-overflow-scrolling:touch;scrollbar-width:thin;margin-right:calc(var(--pad) * -1);padding-right:var(--pad)}
+@media(max-width:900px){
+  .top-l{padding-top:clamp(2.4rem,8vw,4rem)}
+  .wrap{padding-top:.5rem}
+  .toc{display:flex;position:sticky;top:0;z-index:6;gap:.5rem;margin:0 calc(var(--pad) * -1) 1rem;padding:.7rem var(--pad);max-height:none;overflow-x:auto;overflow-y:hidden;background:var(--bg);border-bottom:1px solid var(--line);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .toc::-webkit-scrollbar{display:none}
+  .toc a{flex:none;white-space:nowrap;padding:.4rem .9rem;border:1px solid var(--line);border-radius:999px;font-size:.85rem}
+  .doc section{scroll-margin-top:4.6rem}
+}
+@media(max-width:640px){
+  body{font-size:1rem;line-height:1.6}
+  .lh{padding:.9rem var(--pad);gap:.6rem}
+  .logo{font-size:1.15rem}
+  .lh nav{width:100%;flex-wrap:nowrap;overflow-x:auto;gap:1.1rem;font-size:.88rem;padding-bottom:.2rem;scrollbar-width:none}
+  .lh nav::-webkit-scrollbar{display:none}
+  .lh nav a{flex:none;white-space:nowrap}
+  h1{font-size:clamp(2rem,10.5vw,3rem);margin:.6rem 0 1rem}
+  .lead{font-size:1.02rem}
+  .stamp{flex-direction:column;gap:.35rem;font-size:.85rem;margin-top:1.2rem}
+  .doc section{padding:1.6rem 0}
+  .doc h2{font-size:1.3rem}
+  .doc h2::before{display:block;margin:0 0 .3rem}
+  .doc ul{padding-left:1.1rem}
+  table{font-size:.88rem;min-width:24rem}
+  th,td{padding:.6rem .7rem .6rem 0}
+  .note{padding:.85rem 1rem;font-size:.93rem}
+  .lf{flex-direction:column;padding:1.2rem var(--pad);gap:.7rem;font-size:.85rem}
+  .lf nav{gap:.5rem 1rem}
+}
+@media(max-width:380px){table{min-width:22rem}}
+.wrap>*{min-width:0}
+.doc section,.tw{max-width:100%}
