@@ -710,3 +710,25 @@ a.gcard{display:block;color:inherit}
 .foot-cols a::after,.foot-bar a::after{content:"";position:absolute;left:0;bottom:-3px;height:1px;width:100%;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s cubic-bezier(.2,.7,.1,1)}
 .foot-cols a:hover::after,.foot-cols a:focus-visible::after,.foot-bar a:hover::after,.foot-bar a:focus-visible::after{transform:scaleX(1);transform-origin:left}
 @media (prefers-reduced-motion:reduce){.foot-cols a::after,.foot-bar a::after{transition:none}}
+
+/* ---- fix: dull colours on phones ---- */
+:root{color-scheme:dark}
+@media (hover:none){
+  .hero-photo img{filter:none}
+  .rows:hover .row{opacity:1}
+  .row:hover h3{transform:none}
+  .dock-r:hover .dk:not(:hover){opacity:1}
+}
+/* ---- fix: extra blank space at the bottom (scroll thread no longer stretches the page) ---- */
+body{position:relative}
+.thr-box{position:absolute;left:0;top:0;right:0;bottom:0;z-index:2;pointer-events:none;overflow:hidden}
+.thr{position:absolute;left:0;top:0;width:auto;height:auto;overflow:visible}
+/* ---- fix: header hides completely (not clickable) after the hero ---- */
+.top{animation:topIn 1s .2s backwards;transition:opacity .45s ease,visibility 0s}
+@keyframes topIn{from{opacity:0}}
+.top.gone,.top.gone~.dd{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .45s ease,visibility 0s .45s}
+
+/* ---- fix: no blue tap/click box ---- */
+*{-webkit-tap-highlight-color:transparent}
+button,summary,.btn,.nav-cta,.dd-btn,.acc button,.send,.opts span,.mn-btn,.o-btn{-webkit-user-select:none;user-select:none;touch-action:manipulation}
+:focus:not(:focus-visible){outline:none}

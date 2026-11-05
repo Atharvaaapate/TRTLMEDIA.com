@@ -73,3 +73,8 @@ html{-webkit-text-size-adjust:100%}
 @media(max-width:380px){table{min-width:22rem}}
 .wrap>*{min-width:0}
 .doc section,.tw{max-width:100%}
+
+/* ---- fix: no blue tap/click box ---- */
+*{-webkit-tap-highlight-color:transparent}
+button,summary,.btn,.nav-cta,.dd-btn,.acc button,.send,.opts span,.mn-btn,.o-btn{-webkit-user-select:none;user-select:none;touch-action:manipulation}
+:focus:not(:focus-visible){outline:none}

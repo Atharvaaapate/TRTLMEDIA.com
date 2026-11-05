@@ -92,3 +92,8 @@ footer{display:flex;justify-content:space-between;padding:1.5rem var(--pad);back
 
 footer{flex-wrap:wrap;gap:.6rem 1.5rem}
 footer .back{color:#fff;text-decoration:underline;text-underline-offset:3px}
+
+/* ---- fix: no blue tap/click box ---- */
+*{-webkit-tap-highlight-color:transparent}
+button,summary,.btn,.nav-cta,.dd-btn,.acc button,.send,.opts span,.mn-btn,.o-btn{-webkit-user-select:none;user-select:none;touch-action:manipulation}
+:focus:not(:focus-visible){outline:none}

@@ -177,16 +177,16 @@
     lenis ? lenis.scrollTo(target, { duration: 1.4 }) : $(target) && $(target).scrollIntoView({ behavior: "smooth" });
   }));
 
+  const topEl = $(".top");
   gsap.set(".line > span", { yPercent: 110 });
   const heroTl = gsap.timeline({ paused: true, defaults: { ease: "power4.out" } })
     .to(".hero-word .line > span", { yPercent: 0, duration: 1.5, delay: 0.15 })
     .from(".hero-photo", { clipPath: "inset(100% 0 0 0)", duration: 1.4, ease: "power4.inOut" }, 0.2)
     .to(".hc .line > span", { yPercent: 0, duration: 1.1, stagger: 0.1 }, "-=1")
-    .from(".hero-meta, .hero-cta", { opacity: 0, y: 16, duration: 1 }, "-=0.7")
-    .from(".top", { opacity: 0, duration: 1 }, "-=1");
+    .from(".hero-meta, .hero-cta", { opacity: 0, y: 16, duration: 1 }, "-=0.7");
   onLoaded(() => heroTl.play());
   /* replay hero when scrolling back up to it */
-  ScrollTrigger.create({ trigger: ".hero", start: "bottom top", onLeave: () => heroTl.pause(0), onEnterBack: () => heroTl.restart() });
+  ScrollTrigger.create({ trigger: ".hero", start: "bottom top", onLeave: () => { heroTl.pause(0); topEl && topEl.classList.add("gone"); }, onEnterBack: () => { heroTl.restart(); topEl && topEl.classList.remove("gone"); } });
   if (!LITE) gsap.to(".hero-photo", { yPercent: -10, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
 
   if (!LITE) $$(".reel").forEach((r) => {

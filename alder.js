@@ -1,4 +1,7 @@
 (() => {
+  /* "Back to TRTL MEDIA": go back to the page we came from (sector page or home), else fall back to the home page */
+  const backLink = document.querySelector("a.back");
+  if (backLink) backLink.addEventListener("click", (e) => { try { if (document.referrer && new URL(document.referrer).origin === location.origin && history.length > 1) { e.preventDefault(); history.back(); } } catch (x) {} });
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;

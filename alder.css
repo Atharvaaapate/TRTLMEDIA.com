@@ -104,3 +104,8 @@ footer .back{color:#fff;text-decoration:underline;text-underline-offset:3px}
   .reel-panel img{transform:none}
   .reveal .w{opacity:1}
 }
+
+/* ---- fix: no blue tap/click box ---- */
+*{-webkit-tap-highlight-color:transparent}
+button,summary,.btn,.nav-cta,.dd-btn,.acc button,.send,.opts span,.mn-btn,.o-btn{-webkit-user-select:none;user-select:none;touch-action:manipulation}
+:focus:not(:focus-visible){outline:none}

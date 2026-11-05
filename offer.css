@@ -152,3 +152,9 @@ html.js .rv.in{opacity:1;transform:none}
 @media(max-width:900px){.o-price{grid-template-columns:1fr}.o-grid{grid-template-columns:1fr 1fr}.o-steps{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.o-grid,.o-steps,form{grid-template-columns:1fr}.o-top nav a:not(.o-nav-cta){display:none}}
 @media(prefers-reduced-motion:reduce){.gold{animation:none}.o-btn::after{display:none}html.js .rv{opacity:1;transform:none;transition:none}.t-track{transition:none}html{scroll-behavior:auto}}
+
+/* ---- fix: no blue tap/click box ---- */
+*{-webkit-tap-highlight-color:transparent}
+button,summary,.btn,.nav-cta,.dd-btn,.acc button,.send,.opts span,.mn-btn,.o-btn{-webkit-user-select:none;user-select:none;touch-action:manipulation}
+:focus:not(:focus-visible){outline:none}
+:root{color-scheme:dark}

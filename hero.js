@@ -373,11 +373,11 @@
       return () => { removeEventListener("scroll", schedule); removeEventListener("resize", schedule); cancelAnimationFrame(raf); };
     }, []);
     if (reduce) return null;
-    return h("svg", { className: "thr", ref: svg, "aria-hidden": true },
+    return h("div", { className: "thr-box", "aria-hidden": true }, h("svg", { className: "thr", ref: svg, "aria-hidden": true },
       h("g", null,
         h("path", { ref: path, fill: "none", stroke: "#C8F169", strokeWidth: 4, strokeLinecap: "round", strokeLinejoin: "round" }),
         h("circle", { ref: halo, r: 16, fill: "#C8F169", opacity: 0.2, style: { display: "none" } }),
-        h("circle", { ref: dot, r: 7, fill: "#C8F169", style: { display: "none" } })));
+        h("circle", { ref: dot, r: 7, fill: "#C8F169", style: { display: "none" } }))));
   }
   /* The green scroll thread is back, in a lighter form (see Thread above).
      To switch it off again, change THREAD_ON to false. */
