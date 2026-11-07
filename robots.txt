@@ -1,5 +1,4 @@
-
 User-agent: *
 Allow: /
 
-Sitemap: https://atharvaaapate.github.io/TRTLMEDIA.com/sitemap.xml
+Sitemap: https://trtlmedia.com/sitemap.xml
